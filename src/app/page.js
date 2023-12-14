@@ -1,21 +1,16 @@
 "use client"
 
+import ForecastGroup from "@/componets/forecastgroup";
 import SmallForecast from "@/componets/smallforecast";
 import useAxios from "@/hooks/useAxios"
 import { useEffect } from "react";
 
 
 export default function Home() {
-  // const { response } = useAxios("12.157383", "55.613262")
-
-  // useEffect(function() {
-  //   console.log(response);
-  // }, [])
-
+  
   return (
-    <main>
-      <div className=" flex flex-col gap-2 py-4 hidden"> {/* denim */}
-        <ul className=" flex gap-2 flex-wrap"> {/* denim */}
+    <main className="bg-denim-light relative">
+        {/* <ul className=" flex gap-2 flex-wrap"> 
 
           <li className="w-20 h-20 bg-transparent rounded-full"></li>
 
@@ -40,19 +35,14 @@ export default function Home() {
           <li className="w-20 h-20 bg-denim rounded-full"></li>  
           <li className="w-20 h-20 bg-pink rounded-full"></li>
           <li className="w-20 h-20 bg-lavender rounded-full"></li>
+          backdrop-blur-2xl
+        </ul> */}
 
-        </ul>
-        <div className="flex flex-wrap bg-gradient-to-br from-denim-light to-denim-dark p-4">
-          <img src="/sun.svg" alt="" className="h-20"/>
-          <img src="/moon.svg" alt="" className="h-20"/>
-          <img src="/cloud.svg" alt="" className="h-20 w-20"/>
-          <img src="/rectangle.svg" alt=""/>
-          <img src="/back.svg" alt=""/>
-          <img src="/front.svg" alt=""/>
-          <img src="/house.svg" alt="" className="w-40 h-80 px-4 pb-6 bg-night-sky bg-center bg-cover"/>
+        <img src="/house.svg" alt="" className="block absolute inset-0 bg-night-sky bg-cover bg-center p-6 h-screen"/>
+        <div className="fixed inset-x-0 bottom-0">
+          <ForecastGroup />
         </div>
-      </div>
-      <SmallForecast temp="5" icon="/cloud.svg" rain="10" time="Now"/>
+
     </main>
   )
 }
