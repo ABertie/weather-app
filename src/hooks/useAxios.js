@@ -13,7 +13,7 @@ export default function useAxios(lat, lon) {
     async function getData() {
         try {
             // throw new Error("This in an error")
-            const RESPONSE = await axios.get(`/weather?lat=${lat}&lon=${lon}&appid=${key}`)
+            const RESPONSE = await axios.get(`/forecast?lat=${lat}&lon=${lon}&appid=${key}`)
             setResponse(RESPONSE.data)
         } 
         catch {

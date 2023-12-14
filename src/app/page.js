@@ -1,12 +1,14 @@
 "use client"
 
 import ForecastGroup from "@/componets/forecastgroup";
-import SmallForecast from "@/componets/smallforecast";
-import useAxios from "@/hooks/useAxios"
-import { useEffect } from "react";
-
+import useAxios from "@/hooks/useAxios";
+import { useEffect, useState } from "react";
 
 export default function Home() {
+  const { response, error, loading } = useAxios("55.613262", "12.157383")
+  const [week, setWeek] = useState(true)
+  
+  // console.log(response.list && response);
   
   return (
     <main className="bg-denim-light relative">
@@ -35,14 +37,13 @@ export default function Home() {
           <li className="w-20 h-20 bg-denim rounded-full"></li>  
           <li className="w-20 h-20 bg-pink rounded-full"></li>
           <li className="w-20 h-20 bg-lavender rounded-full"></li>
-          backdrop-blur-2xl
         </ul> */}
 
-        <img src="/house.svg" alt="" className="block absolute inset-0 bg-night-sky bg-cover bg-center p-6 h-screen"/>
+        <img src="/house.svg" alt="" className="block absolute inset-0 bg-night-sky bg-cover bg-center h-screen pt-20"/>
+        {!loading && 
         <div className="fixed inset-x-0 bottom-0">
-          <ForecastGroup />
-        </div>
-
+          <ForecastGroup week={week} res={response}/>
+        </div>}
     </main>
   )
 }
