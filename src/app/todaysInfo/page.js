@@ -14,6 +14,7 @@ export default function TodaysInfo() {
       {error && <p>{error}</p>}
       {!loading ? 
       <>
+        <p>hej</p>
         <CityWeatherSmall city={response.city} now={response.list[0]}/>
         <ForecastBox response={response} today={true}/>
       </>
